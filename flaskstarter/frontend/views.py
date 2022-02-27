@@ -50,7 +50,7 @@ def contact_us():
     form = ContactUsForm()
 
     if form.validate_on_submit():
-        _contact = ContactUs()
+        _contact = ContactUs()  #Do we need this?
         form.populate_obj(_contact)
         db.session.add(_contact)
         db.session.commit()
@@ -60,6 +60,40 @@ def contact_us():
         return redirect(url_for('frontend.contact_us'))
 
     return render_template('frontend/contact_us.html', form=form)
+
+# ToDo
+@frontend.route('/schedule', methods=['GET', 'POST'])
+def schedule():
+    form = ScheduleForm()
+
+    if form.validate_on_submit():
+        _schedule = ContactUs()
+        form.populate_obj(_schedule)
+        db.session.add(_schedule)
+        db.session.commit()
+
+        # flash('Thanks! We\'ll get back to you shortly!', 'success')
+
+        return redirect(url_for('frontend.schedule'))
+
+    return render_template('frontend/schedule.html', form=form)
+
+# ToDo
+@frontend.route('/output', methods=['GET', 'POST'])
+def output():
+    form = OutputForm()
+
+    if form.validate_on_submit():
+        _output = ContactUs()
+        form.populate_obj(_output)
+        db.session.add(_output)
+        db.session.commit()
+
+        # flash('Thanks! We\'ll get back to you shortly!', 'success')
+
+        return redirect(url_for('frontend.output'))
+
+    return render_template('frontend/output.html', form=form)
 
 
 @frontend.route('/login', methods=['GET', 'POST'])

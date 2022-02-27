@@ -60,8 +60,10 @@ class ContactUsForm(FlaskForm):
     message = TextAreaField(u'Your Message', [InputRequired(), Length(10, 1024)])
     submit = SubmitField('Submit')
 
-
 class ScheduleForm(FlaskForm):
     screens = StringField(u'Screens', [InputRequired(), Length(0, 128)])
     schedule = StringField(u'Schedule', [InputRequired(), Length(0, 128)])
     submit = SubmitField('Submit')
+
+class OutputForm(FlaskForm):
+    subject = StringField(u'Subject', [InputRequired(), Length(5, 128)])
