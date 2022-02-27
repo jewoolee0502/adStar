@@ -1,0 +1,504 @@
+{% from "macros/_form.html" import render_form %}
+
+{% set page_title = 'Sign Up' %}
+
+{% extends 'layouts/base.html' %}
+
+{% block body %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            h1 {
+                text-align: center;
+                background-color: lightgreen;
+            }
+
+            #form {
+                padding-right: 15%;
+                padding-left: 15%;
+            }
+
+            td {
+                padding-left: 20px;
+                padding-right: 20px;
+                text-align: center;
+            }
+
+            #day {
+                border: 1px solid black;
+            }
+
+            table td:hover {
+                background-color: lightgreen;
+            }
+        </style>
+        <script>
+            let text = "";
+            function handleClick(cb) {
+                text = "";
+                var idCheckBox = cb.getAttribute('id');
+                var changeableTags = document.getElementsByClassName(idCheckBox);
+                
+                if (cb.checked === true) {
+                    console.log("true");
+
+                    for (i = 0; i < changeableTags.length; i++) {
+                        changeableTags[i].style.display="initial";
+                    }
+                } else {
+                    console.log("false");
+
+                    for (i = 0; i < changeableTags.length; i++) {
+                        changeableTags[i].style.display = "none";
+                    }
+                }
+            }
+
+            document.getElementById("btn").addEventListener('click', add);
+
+            function add() {
+                const url = "localhost:5000/test";
+                const http = new XMLHttpRequest();
+                http.open("GET", url);
+                http.send();
+                http.onreadystatechange=(e)=> {
+                console.log(http.responseText)
+            }
+}
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1>Code.Jam</h1>
+        </header>
+        <div>
+            <form id="form" action="" method="post">
+                <table>
+                    <tr>
+                        <td id="day">Monday</td>
+                        <td id="day">Tuesday</td>
+                        <td id="day">Wednesday</td>
+                        <td id="day">Thursday</td>
+                        <td id="day">Friday</td>
+                        <td id="day">Saturday</td>
+                        <td id="day">Sunday</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" id="Mon-00" name="time" onclick="handleClick(this);">00:00</td>
+                        <td><input type="checkbox" id="Tue-00" name="time" onclick="handleClick(this);">00:00</td>
+                        <td><input type="checkbox" id="Wed-00" name="time" onclick="handleClick(this);">00:00</td>
+                        <td><input type="checkbox" id="Thu-00" name="time" onclick="handleClick(this);">00:00</td>
+                        <td><input type="checkbox" id="Fri-00" name="time" onclick="handleClick(this);">00:00</td>
+                        <td><input type="checkbox" id="Sat-00" name="time" onclick="handleClick(this);">00:00</td>
+                        <td><input type="checkbox" id="Sun-00" name="time" onclick="handleClick(this);">00:00</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" id="Mon-01" name="time" onclick="handleClick(this);">01:00</td>
+                        <td><input type="checkbox" id="Tue-01" name="time" onclick="handleClick(this);">01:00</td>
+                        <td><input type="checkbox" id="Wed-01" name="time" onclick="handleClick(this);">01:00</td>
+                        <td><input type="checkbox" id="Thu-01" name="time" onclick="handleClick(this);">01:00</td>
+                        <td><input type="checkbox" id="Fri-01" name="time" onclick="handleClick(this);">01:00</td>
+                        <td><input type="checkbox" id="Sat-01" name="time" onclick="handleClick(this);">01:00</td>
+                        <td><input type="checkbox" id="Sun-01" name="time" onclick="handleClick(this);">01:00</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" id="Mon-02" name="time" onclick="handleClick(this);">02:00</td>
+                        <td><input type="checkbox" id="Tue-02" name="time" onclick="handleClick(this);">02:00</td>
+                        <td><input type="checkbox" id="Wed-02" name="time" onclick="handleClick(this);">02:00</td>
+                        <td><input type="checkbox" id="Thu-02" name="time" onclick="handleClick(this);">02:00</td>
+                        <td><input type="checkbox" id="Fri-02" name="time" onclick="handleClick(this);">02:00</td>
+                        <td><input type="checkbox" id="Sat-02" name="time" onclick="handleClick(this);">02:00</td>
+                        <td><input type="checkbox" id="Sun-02" name="time" onclick="handleClick(this);">02:00</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" id="Mon-03" name="time" onclick="handleClick(this);">03:00</td>
+                        <td><input type="checkbox" id="Tue-03" name="time" onclick="handleClick(this);">03:00</td>
+                        <td><input type="checkbox" id="Wed-03" name="time" onclick="handleClick(this);">03:00</td>
+                        <td><input type="checkbox" id="Thu-03" name="time" onclick="handleClick(this);">03:00</td>
+                        <td><input type="checkbox" id="Fri-03" name="time" onclick="handleClick(this);">03:00</td>
+                        <td><input type="checkbox" id="Sat-03" name="time" onclick="handleClick(this);">03:00</td>
+                        <td><input type="checkbox" id="Sun-03" name="time" onclick="handleClick(this);">03:00</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" id="Mon-04" name="time" onclick="handleClick(this);">04:00</td>
+                        <td><input type="checkbox" id="Tue-04" name="time" onclick="handleClick(this);">04:00</td>
+                        <td><input type="checkbox" id="Wed-04" name="time" onclick="handleClick(this);">04:00</td>
+                        <td><input type="checkbox" id="Thu-04" name="time" onclick="handleClick(this);">04:00</td>
+                        <td><input type="checkbox" id="Fri-04" name="time" onclick="handleClick(this);">04:00</td>
+                        <td><input type="checkbox" id="Sat-04" name="time" onclick="handleClick(this);">04:00</td>
+                        <td><input type="checkbox" id="Sun-04" name="time" onclick="handleClick(this);">04:00</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" id="Mon-05" name="time" onclick="handleClick(this);">05:00</td>
+                        <td><input type="checkbox" id="Tue-05" name="time" onclick="handleClick(this);">05:00</td>
+                        <td><input type="checkbox" id="Wed-05" name="time" onclick="handleClick(this);">05:00</td>
+                        <td><input type="checkbox" id="Thu-05" name="time" onclick="handleClick(this);">05:00</td>
+                        <td><input type="checkbox" id="Fri-05" name="time" onclick="handleClick(this);">05:00</td>
+                        <td><input type="checkbox" id="Sat-05" name="time" onclick="handleClick(this);">05:00</td>
+                        <td><input type="checkbox" id="Sun-05" name="time" onclick="handleClick(this);">05:00</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" id="Mon-06" name="time" onclick="handleClick(this);">06:00</td>
+                        <td><input type="checkbox" id="Tue-06" name="time" onclick="handleClick(this);">06:00</td>
+                        <td><input type="checkbox" id="Wed-06" name="time" onclick="handleClick(this);">06:00</td>
+                        <td><input type="checkbox" id="Thu-06" name="time" onclick="handleClick(this);">06:00</td>
+                        <td><input type="checkbox" id="Fri-06" name="time" onclick="handleClick(this);">06:00</td>
+                        <td><input type="checkbox" id="Sat-06" name="time" onclick="handleClick(this);">06:00</td>
+                        <td><input type="checkbox" id="Sun-06" name="time" onclick="handleClick(this);">06:00</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" id="Mon-07" name="time" onclick="handleClick(this);">07:00</td>
+                        <td><input type="checkbox" id="Tue-07" name="time" onclick="handleClick(this);">07:00</td>
+                        <td><input type="checkbox" id="Wed-07" name="time" onclick="handleClick(this);">07:00</td>
+                        <td><input type="checkbox" id="Thu-07" name="time" onclick="handleClick(this);">07:00</td>
+                        <td><input type="checkbox" id="Fri-07" name="time" onclick="handleClick(this);">07:00</td>
+                        <td><input type="checkbox" id="Sat-07" name="time" onclick="handleClick(this);">07:00</td>
+                        <td><input type="checkbox" id="Sun-07" name="time" onclick="handleClick(this);">07:00</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" id="Mon-08" name="time" onclick="handleClick(this);">08:00</td>
+                        <td><input type="checkbox" id="Tue-08" name="time" onclick="handleClick(this);">08:00</td>
+                        <td><input type="checkbox" id="Wed-08" name="time" onclick="handleClick(this);">08:00</td>
+                        <td><input type="checkbox" id="Thu-08" name="time" onclick="handleClick(this);">08:00</td>
+                        <td><input type="checkbox" id="Fri-08" name="time" onclick="handleClick(this);">08:00</td>
+                        <td><input type="checkbox" id="Sat-08" name="time" onclick="handleClick(this);">08:00</td>
+                        <td><input type="checkbox" id="Sun-08" name="time" onclick="handleClick(this);">08:00</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" id="Mon-09" name="time" onclick="handleClick(this);">09:00</td>
+                        <td><input type="checkbox" id="Tue-09" name="time" onclick="handleClick(this);">09:00</td>
+                        <td><input type="checkbox" id="Wed-09" name="time" onclick="handleClick(this);">09:00</td>
+                        <td><input type="checkbox" id="Thu-09" name="time" onclick="handleClick(this);">09:00</td>
+                        <td><input type="checkbox" id="Fri-09" name="time" onclick="handleClick(this);">09:00</td>
+                        <td><input type="checkbox" id="Sat-09" name="time" onclick="handleClick(this);">09:00</td>
+                        <td><input type="checkbox" id="Sun-09" name="time" onclick="handleClick(this);">09:00</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" id="Mon-10" name="time" onclick="handleClick(this);">10:00</td>
+                        <td><input type="checkbox" id="Tue-10" name="time" onclick="handleClick(this);">10:00</td>
+                        <td><input type="checkbox" id="Wed-10" name="time" onclick="handleClick(this);">10:00</td>
+                        <td><input type="checkbox" id="Thu-10" name="time" onclick="handleClick(this);">10:00</td>
+                        <td><input type="checkbox" id="Fri-10" name="time" onclick="handleClick(this);">10:00</td>
+                        <td><input type="checkbox" id="Sat-10" name="time" onclick="handleClick(this);">10:00</td>
+                        <td><input type="checkbox" id="Sun-10" name="time" onclick="handleClick(this);">10:00</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" id="Mon-11" name="time" onclick="handleClick(this);">11:00</td>
+                        <td><input type="checkbox" id="Tue-11" name="time" onclick="handleClick(this);">11:00</td>
+                        <td><input type="checkbox" id="Wed-11" name="time" onclick="handleClick(this);">11:00</td>
+                        <td><input type="checkbox" id="Thu-11" name="time" onclick="handleClick(this);">11:00</td>
+                        <td><input type="checkbox" id="Fri-11" name="time" onclick="handleClick(this);">11:00</td>
+                        <td><input type="checkbox" id="Sat-11" name="time" onclick="handleClick(this);">11:00</td>
+                        <td><input type="checkbox" id="Sun-11" name="time" onclick="handleClick(this);">11:00</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" id="Mon-12" name="time" onclick="handleClick(this);">12:00</td>
+                        <td><input type="checkbox" id="Tue-12" name="time" onclick="handleClick(this);">12:00</td>
+                        <td><input type="checkbox" id="Wed-12" name="time" onclick="handleClick(this);">12:00</td>
+                        <td><input type="checkbox" id="Thu-12" name="time" onclick="handleClick(this);">12:00</td>
+                        <td><input type="checkbox" id="Fri-12" name="time" onclick="handleClick(this);">12:00</td>
+                        <td><input type="checkbox" id="Sat-12" name="time" onclick="handleClick(this);">12:00</td>
+                        <td><input type="checkbox" id="Sun-12" name="time" onclick="handleClick(this);">12:00</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" id="Mon-13" name="time" onclick="handleClick(this);">13:00</td>
+                        <td><input type="checkbox" id="Tue-13" name="time" onclick="handleClick(this);">13:00</td>
+                        <td><input type="checkbox" id="Wed-13" name="time" onclick="handleClick(this);">13:00</td>
+                        <td><input type="checkbox" id="Thu-13" name="time" onclick="handleClick(this);">13:00</td>
+                        <td><input type="checkbox" id="Fri-13" name="time" onclick="handleClick(this);">13:00</td>
+                        <td><input type="checkbox" id="Sat-13" name="time" onclick="handleClick(this);">13:00</td>
+                        <td><input type="checkbox" id="Sun-13" name="time" onclick="handleClick(this);">13:00</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" id="Mon-14" name="time" onclick="handleClick(this);">14:00</td>
+                        <td><input type="checkbox" id="Tue-14" name="time" onclick="handleClick(this);">14:00</td>
+                        <td><input type="checkbox" id="Wed-14" name="time" onclick="handleClick(this);">14:00</td>
+                        <td><input type="checkbox" id="Thu-14" name="time" onclick="handleClick(this);">14:00</td>
+                        <td><input type="checkbox" id="Fri-14" name="time" onclick="handleClick(this);">14:00</td>
+                        <td><input type="checkbox" id="Sat-14" name="time" onclick="handleClick(this);">14:00</td>
+                        <td><input type="checkbox" id="Sun-14" name="time" onclick="handleClick(this);">14:00</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" id="Mon-15" name="time" onclick="handleClick(this);">15:00</td>
+                        <td><input type="checkbox" id="Tue-15" name="time" onclick="handleClick(this);">15:00</td>
+                        <td><input type="checkbox" id="Wed-15" name="time" onclick="handleClick(this);">15:00</td>
+                        <td><input type="checkbox" id="Thu-15" name="time" onclick="handleClick(this);">15:00</td>
+                        <td><input type="checkbox" id="Fri-15" name="time" onclick="handleClick(this);">15:00</td>
+                        <td><input type="checkbox" id="Sat-15" name="time" onclick="handleClick(this);">15:00</td>
+                        <td><input type="checkbox" id="Sun-15" name="time" onclick="handleClick(this);">15:00</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" id="Mon-16" name="time" onclick="handleClick(this);">16:00</td>
+                        <td><input type="checkbox" id="Tue-16" name="time" onclick="handleClick(this);">16:00</td>
+                        <td><input type="checkbox" id="Wed-16" name="time" onclick="handleClick(this);">16:00</td>
+                        <td><input type="checkbox" id="Thu-16" name="time" onclick="handleClick(this);">16:00</td>
+                        <td><input type="checkbox" id="Fri-16" name="time" onclick="handleClick(this);">16:00</td>
+                        <td><input type="checkbox" id="Sat-16" name="time" onclick="handleClick(this);">16:00</td>
+                        <td><input type="checkbox" id="Sun-16" name="time" onclick="handleClick(this);">16:00</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" id="Mon-17" name="time" onclick="handleClick(this);">17:00</td>
+                        <td><input type="checkbox" id="Tue-17" name="time" onclick="handleClick(this);">17:00</td>
+                        <td><input type="checkbox" id="Wed-17" name="time" onclick="handleClick(this);">17:00</td>
+                        <td><input type="checkbox" id="Thu-17" name="time" onclick="handleClick(this);">17:00</td>
+                        <td><input type="checkbox" id="Fri-17" name="time" onclick="handleClick(this);">17:00</td>
+                        <td><input type="checkbox" id="Sat-17" name="time" onclick="handleClick(this);">17:00</td>
+                        <td><input type="checkbox" id="Sun-17" name="time" onclick="handleClick(this);">17:00</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" id="Mon-18" name="time" onclick="handleClick(this);">18:00</td>
+                        <td><input type="checkbox" id="Tue-18" name="time" onclick="handleClick(this);">18:00</td>
+                        <td><input type="checkbox" id="Wed-18" name="time" onclick="handleClick(this);">18:00</td>
+                        <td><input type="checkbox" id="Thu-18" name="time" onclick="handleClick(this);">18:00</td>
+                        <td><input type="checkbox" id="Fri-18" name="time" onclick="handleClick(this);">18:00</td>
+                        <td><input type="checkbox" id="Sat-18" name="time" onclick="handleClick(this);">18:00</td>
+                        <td><input type="checkbox" id="Sun-18" name="time" onclick="handleClick(this);">18:00</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" id="Mon-19" name="time" onclick="handleClick(this);">19:00</td>
+                        <td><input type="checkbox" id="Tue-19" name="time" onclick="handleClick(this);">19:00</td>
+                        <td><input type="checkbox" id="Wed-19" name="time" onclick="handleClick(this);">19:00</td>
+                        <td><input type="checkbox" id="Thu-19" name="time" onclick="handleClick(this);">19:00</td>
+                        <td><input type="checkbox" id="Fri-19" name="time" onclick="handleClick(this);">19:00</td>
+                        <td><input type="checkbox" id="Sat-19" name="time" onclick="handleClick(this);">19:00</td>
+                        <td><input type="checkbox" id="Sun-19" name="time" onclick="handleClick(this);">19:00</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" id="Mon-20" name="time" onclick="handleClick(this);">20:00</td>
+                        <td><input type="checkbox" id="Tue-20" name="time" onclick="handleClick(this);">20:00</td>
+                        <td><input type="checkbox" id="Wed-20" name="time" onclick="handleClick(this);">20:00</td>
+                        <td><input type="checkbox" id="Thu-20" name="time"onclick="handleClick(this);">20:00</td>
+                        <td><input type="checkbox" id="Fri-20" name="time" onclick="handleClick(this);">20:00</td>
+                        <td><input type="checkbox" id="Sat-20" name="time" onclick="handleClick(this);">20:00</td>
+                        <td><input type="checkbox" id="Sun-20" name="time" onclick="handleClick(this);">20:00</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" id="Mon-21" name="time" onclick="handleClick(this);">21:00</td>
+                        <td><input type="checkbox" id="Tue-21" name="time" onclick="handleClick(this);">21:00</td>
+                        <td><input type="checkbox" id="Wed-21" name="time" onclick="handleClick(this);">21:00</td>
+                        <td><input type="checkbox" id="Thu-21" name="time" onclick="handleClick(this);">21:00</td>
+                        <td><input type="checkbox" id="Fri-21" name="time" onclick="handleClick(this);">21:00</td>
+                        <td><input type="checkbox" id="Sat-21" name="time" onclick="handleClick(this);">21:00</td>
+                        <td><input type="checkbox" id="Sun-21" name="time" onclick="handleClick(this);">21:00</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" id="Mon-22" name="time" onclick="handleClick(this);">22:00</td>
+                        <td><input type="checkbox" id="Tue-22" name="time" onclick="handleClick(this);">22:00</td>
+                        <td><input type="checkbox" id="Wed-22" name="time" onclick="handleClick(this);">22:00</td>
+                        <td><input type="checkbox" id="Thu-22" name="time" onclick="handleClick(this);">22:00</td>
+                        <td><input type="checkbox" id="Fri-22" name="time" onclick="handleClick(this);">22:00</td>
+                        <td><input type="checkbox" id="Sat-22" name="time" onclick="handleClick(this);">22:00</td>
+                        <td><input type="checkbox" id="Sun-22" name="time" onclick="handleClick(this);">22:00</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" id="Mon-23" name="time" onclick="handleClick(this);">23:00</td>
+                        <td><input type="checkbox" id="Tue-23" name="time" onclick="handleClick(this);">23:00</td>
+                        <td><input type="checkbox" id="Wed-23" name="time" onclick="handleClick(this);">23:00</td>
+                        <td><input type="checkbox" id="Thu-23" name="time" onclick="handleClick(this);">23:00</td>
+                        <td><input type="checkbox" id="Fri-23" name="time" onclick="handleClick(this);">23:00</td>
+                        <td><input type="checkbox" id="Sat-23" name="time" onclick="handleClick(this);">23:00</td>
+                        <td><input type="checkbox" id="Sun-23" name="time" onclick="handleClick(this);">23:00</td>
+                    </tr>
+                </table>
+                <input type="submit" value="submit" name="submit">
+            </form>
+        </div>
+
+        <div>
+            <p class="Mon-00" style="display: none;">Mon-00</p>
+            <p class="Mon-01" style="display: none;">Mon-01</p>
+            <p class="Mon-02" style="display: none;">Mon-02</p>
+            <p class="Mon-03" style="display: none;">Mon-03</p>
+            <p class="Mon-04" style="display: none;">Mon-04</p>
+            <p class="Mon-05" style="display: none;">Mon-05</p>
+            <p class="Mon-06" style="display: none;">Mon-06</p>
+            <p class="Mon-07" style="display: none;">Mon-07</p>
+            <p class="Mon-08" style="display: none;">Mon-08</p>
+            <p class="Mon-09" style="display: none;">Mon-09</p>
+            <p class="Mon-10" style="display: none;">Mon-10</p>
+            <p class="Mon-11" style="display: none;">Mon-11</p>
+            <p class="Mon-12" style="display: none;">Mon-12</p>
+            <p class="Mon-13" style="display: none;">Mon-13</p>
+            <p class="Mon-14" style="display: none;">Mon-14</p>
+            <p class="Mon-15" style="display: none;">Mon-15</p>
+            <p class="Mon-16" style="display: none;">Mon-16</p>
+            <p class="Mon-17" style="display: none;">Mon-17</p>
+            <p class="Mon-18" style="display: none;">Mon-18</p>
+            <p class="Mon-19" style="display: none;">Mon-19</p>
+            <p class="Mon-20" style="display: none;">Mon-20</p>
+            <p class="Mon-21" style="display: none;">Mon-21</p>
+            <p class="Mon-22" style="display: none;">Mon-22</p>
+            <p class="Mon-23" style="display: none;">Mon-23</p>
+        </div>
+
+        <div>
+            <p class="Tue-00" style="display: none;">Tue-00</p>
+            <p class="Tue-01" style="display: none;">Tue-01</p>
+            <p class="Tue-02" style="display: none;">Tue-02</p>
+            <p class="Tue-03" style="display: none;">Tue-03</p>
+            <p class="Tue-04" style="display: none;">Tue-04</p>
+            <p class="Tue-05" style="display: none;">Tue-05</p>
+            <p class="Tue-06" style="display: none;">Tue-06</p>
+            <p class="Tue-07" style="display: none;">Tue-07</p>
+            <p class="Tue-08" style="display: none;">Tue-08</p>
+            <p class="Tue-09" style="display: none;">Tue-09</p>
+            <p class="Tue-10" style="display: none;">Tue-10</p>
+            <p class="Tue-11" style="display: none;">Tue-11</p>
+            <p class="Tue-12" style="display: none;">Tue-12</p>
+            <p class="Tue-13" style="display: none;">Tue-13</p>
+            <p class="Tue-14" style="display: none;">Tue-14</p>
+            <p class="Tue-15" style="display: none;">Tue-15</p>
+            <p class="Tue-16" style="display: none;">Tue-16</p>
+            <p class="Tue-17" style="display: none;">Tue-17</p>
+            <p class="Tue-18" style="display: none;">Tue-18</p>
+            <p class="Tue-19" style="display: none;">Tue-19</p>
+            <p class="Tue-20" style="display: none;">Tue-20</p>
+            <p class="Tue-21" style="display: none;">Tue-21</p>
+            <p class="Tue-22" style="display: none;">Tue-22</p>
+            <p class="Tue-23" style="display: none;">Tue-23</p>
+        </div>
+
+        <div>
+            <p class="Wed-00" style="display: none;">Wed-00</p>
+            <p class="Wed-01" style="display: none;">Wed-01</p>
+            <p class="Wed-02" style="display: none;">Wed-02</p>
+            <p class="Wed-03" style="display: none;">Wed-03</p>
+            <p class="Wed-04" style="display: none;">Wed-04</p>
+            <p class="Wed-05" style="display: none;">Wed-05</p>
+            <p class="Wed-06" style="display: none;">Wed-06</p>
+            <p class="Wed-07" style="display: none;">Wed-07</p>
+            <p class="Wed-08" style="display: none;">Wed-08</p>
+            <p class="Wed-09" style="display: none;">Wed-09</p>
+            <p class="Wed-10" style="display: none;">Wed-10</p>
+            <p class="Wed-11" style="display: none;">Wed-11</p>
+            <p class="Wed-12" style="display: none;">Wed-12</p>
+            <p class="Wed-13" style="display: none;">Wed-13</p>
+            <p class="Wed-14" style="display: none;">Wed-14</p>
+            <p class="Wed-15" style="display: none;">Wed-15</p>
+            <p class="Wed-16" style="display: none;">Wed-16</p>
+            <p class="Wed-17" style="display: none;">Wed-17</p>
+            <p class="Wed-18" style="display: none;">Wed-18</p>
+            <p class="Wed-19" style="display: none;">Wed-19</p>
+            <p class="Wed-20" style="display: none;">Wed-20</p>
+            <p class="Wed-21" style="display: none;">Wed-21</p>
+            <p class="Wed-22" style="display: none;">Wed-22</p>
+            <p class="Wed-23" style="display: none;">Wed-23</p>
+        </div>
+        
+        <div>
+            <p class="Thu-00" style="display: none;">Thu-00</p>
+            <p class="Thu-01" style="display: none;">Thu-01</p>
+            <p class="Thu-02" style="display: none;">Thu-02</p>
+            <p class="Thu-03" style="display: none;">Thu-03</p>
+            <p class="Thu-04" style="display: none;">Thu-04</p>
+            <p class="Thu-05" style="display: none;">Thu-05</p>
+            <p class="Thu-06" style="display: none;">Thu-06</p>
+            <p class="Thu-07" style="display: none;">Thu-07</p>
+            <p class="Thu-08" style="display: none;">Thu-08</p>
+            <p class="Thu-09" style="display: none;">Thu-09</p>
+            <p class="Thu-10" style="display: none;">Thu-10</p>
+            <p class="Thu-11" style="display: none;">Thu-11</p>
+            <p class="Thu-12" style="display: none;">Thu-12</p>
+            <p class="Thu-13" style="display: none;">Thu-13</p>
+            <p class="Thu-14" style="display: none;">Thu-14</p>
+            <p class="Thu-15" style="display: none;">Thu-15</p>
+            <p class="Thu-16" style="display: none;">Thu-16</p>
+            <p class="Thu-17" style="display: none;">Thu-17</p>
+            <p class="Thu-18" style="display: none;">Thu-18</p>
+            <p class="Thu-19" style="display: none;">Thu-19</p>
+            <p class="Thu-20" style="display: none;">Thu-20</p>
+            <p class="Thu-21" style="display: none;">Thu-21</p>
+            <p class="Thu-22" style="display: none;">Thu-22</p>
+            <p class="Thu-23" style="display: none;">Thu-23</p>
+        </div>
+
+        <div>
+            <p class="Fri-00" style="display: none;">Fri-00</p>
+            <p class="Fri-01" style="display: none;">Fri-01</p>
+            <p class="Fri-02" style="display: none;">Fri-02</p>
+            <p class="Fri-03" style="display: none;">Fri-03</p>
+            <p class="Fri-04" style="display: none;">Fri-04</p>
+            <p class="Fri-05" style="display: none;">Fri-05</p>
+            <p class="Fri-06" style="display: none;">Fri-06</p>
+            <p class="Fri-07" style="display: none;">Fri-07</p>
+            <p class="Fri-08" style="display: none;">Fri-08</p>
+            <p class="Fri-09" style="display: none;">Fri-09</p>
+            <p class="Fri-10" style="display: none;">Fri-10</p>
+            <p class="Fri-11" style="display: none;">Fri-11</p>
+            <p class="Fri-12" style="display: none;">Fri-12</p>
+            <p class="Fri-13" style="display: none;">Fri-13</p>
+            <p class="Fri-14" style="display: none;">Fri-14</p>
+            <p class="Fri-15" style="display: none;">Fri-15</p>
+            <p class="Fri-16" style="display: none;">Fri-16</p>
+            <p class="Fri-17" style="display: none;">Fri-17</p>
+            <p class="Fri-18" style="display: none;">Fri-18</p>
+            <p class="Fri-19" style="display: none;">Fri-19</p>
+            <p class="Fri-20" style="display: none;">Fri-20</p>
+            <p class="Fri-21" style="display: none;">Fri-21</p>
+            <p class="Fri-22" style="display: none;">Fri-22</p>
+            <p class="Fri-23" style="display: none;">Fri-23</p>
+        </div>
+
+        <div>
+            <p class="Sat-00" style="display: none;">Sat-00</p>
+            <p class="Sat-01" style="display: none;">Sat-01</p>
+            <p class="Sat-02" style="display: none;">Sat-02</p>
+            <p class="Sat-03" style="display: none;">Sat-03</p>
+            <p class="Sat-04" style="display: none;">Sat-04</p>
+            <p class="Sat-05" style="display: none;">Sat-05</p>
+            <p class="Sat-06" style="display: none;">Sat-06</p>
+            <p class="Sat-07" style="display: none;">Sat-07</p>
+            <p class="Sat-08" style="display: none;">Sat-08</p>
+            <p class="Sat-09" style="display: none;">Sat-09</p>
+            <p class="Sat-10" style="display: none;">Sat-10</p>
+            <p class="Sat-11" style="display: none;">Sat-11</p>
+            <p class="Sat-12" style="display: none;">Sat-12</p>
+            <p class="Sat-13" style="display: none;">Sat-13</p>
+            <p class="Sat-14" style="display: none;">Sat-14</p>
+            <p class="Sat-15" style="display: none;">Sat-15</p>
+            <p class="Sat-16" style="display: none;">Sat-16</p>
+            <p class="Sat-17" style="display: none;">Sat-17</p>
+            <p class="Sat-18" style="display: none;">Sat-18</p>
+            <p class="Sat-19" style="display: none;">Sat-19</p>
+            <p class="Sat-20" style="display: none;">Sat-20</p>
+            <p class="Sat-21" style="display: none;">Sat-21</p>
+            <p class="Sat-22" style="display: none;">Sat-22</p>
+            <p class="Sat-23" style="display: none;">Sat-23</p>
+        </div>
+
+        <div>
+            <p class="Sun-00" style="display: none;">Sun-00</p>
+            <p class="Sun-01" style="display: none;">Sun-01</p>
+            <p class="Sun-02" style="display: none;">Sun-02</p>
+            <p class="Sun-03" style="display: none;">Sun-03</p>
+            <p class="Sun-04" style="display: none;">Sun-04</p>
+            <p class="Sun-05" style="display: none;">Sun-05</p>
+            <p class="Sun-06" style="display: none;">Sun-06</p>
+            <p class="Sun-07" style="display: none;">Sun-07</p>
+            <p class="Sun-08" style="display: none;">Sun-08</p>
+            <p class="Sun-09" style="display: none;">Sun-09</p>
+            <p class="Sun-10" style="display: none;">Sun-10</p>
+            <p class="Sun-11" style="display: none;">Sun-11</p>
+            <p class="Sun-12" style="display: none;">Sun-12</p>
+            <p class="Sun-13" style="display: none;">Sun-13</p>
+            <p class="Sun-14" style="display: none;">Sun-14</p>
+            <p class="Sun-15" style="display: none;">Sun-15</p>
+            <p class="Sun-16" style="display: none;">Sun-16</p>
+            <p class="Sun-17" style="display: none;">Sun-17</p>
+            <p class="Sun-18" style="display: none;">Sun-18</p>
+            <p class="Sun-19" style="display: none;">Sun-19</p>
+            <p class="Sun-20" style="display: none;">Sun-20</p>
+            <p class="Sun-21" style="display: none;">Sun-21</p>
+            <p class="Sun-22" style="display: none;">Sun-22</p>
+            <p class="Sun-23" style="display: none;">Sun-23</p>
+        </div>
+        <a href="{{url_for('frontend.index')}}" >Submit</a>
+
+    </body>
+</html>
+
+
+{% endblock %}

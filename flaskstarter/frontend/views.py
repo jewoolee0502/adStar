@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from email import utils
+import sched
 from uuid import uuid4
 
 from itsdangerous import URLSafeSerializer
@@ -13,12 +15,13 @@ from flask_login import (login_required, login_user, current_user,
 from ..tasks import MyTaskForm
 from ..user import Users, ACTIVE
 from ..extensions import db, login_manager
-from .forms import (SignupForm, LoginForm, RecoverPasswordForm,
+from .forms import (ScheduleForm, SignupForm, LoginForm, RecoverPasswordForm,
                     ChangePasswordForm, ContactUsForm)
 from .models import ContactUs
 
 from ..emails import send_async_email
 
+from ..utils import get_impressions
 
 frontend = Blueprint('frontend', __name__)
 
@@ -85,6 +88,19 @@ def login():
             flash('Sorry, invalid login', 'danger')
 
     return render_template('frontend/login.html', form=form, _active_login=True)
+
+
+@frontend.route('/schedule', methods=['GET', 'POST'])
+def schedule():
+    form = ScheduleForm()
+    if form.validate_on_submit():
+        screens = form.data['screens'].split(',')
+        schedule = form.data['schedule'].split(',')
+        print(screens, schedule)
+        impressions = get_impressions({'screens': screens,'schedule': schedule})
+        print(impressions)
+        return redirect(form.next.data or url_for('frontend.index'))
+    return render_template('frontend/schedule.html', form=form)
 
 
 @frontend.route('/logout')
